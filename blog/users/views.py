@@ -66,7 +66,7 @@ def account():
             current_user.profile_image = picture
         
         current_user.username = form.username.data
-        current_user.email = form.username.data
+        current_user.email = form.email.data
         
         db.session.commit()
         flash('계정 정보가 수정 되었습니다.')

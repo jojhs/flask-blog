@@ -34,8 +34,8 @@ class RegistrationForm(FlaskForm) :
         
 # 회원정보관리 폼 
 class UpdateUserForm(FlaskForm) : 
-    email = StringField('이메일', validators=[DataRequired(), Email()])
     username = StringField('사용자명', validators=[DataRequired()])
+    email = StringField('이메일', validators=[DataRequired(), Email()])
     # FileAllowed() 안에 리스트로 업로드 할 수 있는 파일 확장자 제한
     # 여기서는 .jpg 와 .png 만 업로드 할 수 있음
     picture = FileField('프로필 이미지 수정', validators=[FileAllowed(['jpg', 'png'])])
