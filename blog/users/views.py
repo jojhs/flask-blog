@@ -38,6 +38,7 @@ def login():
         if user.check_password(form.password.data) and user is not None: 
             login_user(user) 
             flash('로그인에 성공 하였습니다.')
+            print('로그인에 성공 하였습니다.')
             # 사용자가 접근하려 했던 경로 확인 후 리다이렉트
             next = request.args.get('next')
             if next == None or not next[0] == '/' : 
