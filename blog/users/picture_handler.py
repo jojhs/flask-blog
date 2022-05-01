@@ -10,7 +10,7 @@ def add_profile_picture(picture_upload, username) :
     save_filename = str(username) + '.' + extension_type
     # 현재 애플리케이션의 root 경로를 가져온후 'static\images\profile'로 이동하여
     # storage_filename 이름으로 파일 저장
-    filepath = os.path.join(current_app.root_path, 'static\images\profile', save_filename)
+    filepath = os.path.join(current_app.root_path, 'static/images/profile', save_filename)
     
     # 모든 이미지를 동일한 크기로 설정
     profile_picture_size = (200, 200) 
