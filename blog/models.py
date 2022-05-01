@@ -30,9 +30,9 @@ class User(db.Model, UserMixin):
     
 class Post(db.Model): 
     user = db.relationship(User) 
-    id = db.Column(db.Integeger, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    date = db.Colmun(db.DateTime, nullable=False, default=datetime.utcnow)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(140), nullable=False)
     text = db.Column(db.Text, nullable=False)
     
