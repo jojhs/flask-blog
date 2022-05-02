@@ -62,3 +62,19 @@ def update(post_id):
     return render_template('create_post.html', title='포스트 수정', form=form)
 
 # DELETE 
+@post.route('/<int:post_id>/delete', methods=['GET','POST'])
+@login_required
+def delete(post_id): 
+    post = Post.query.get_or_404(post_id)
+    
+    # 포스트를 작성한 사용자가 아니면 403 에러 전달
+    if post.author != current_user: 
+        # abort : Flask가 제공하는 함수 -> 오류코드 전달
+        abort(403)
+    
+    # 포스트를 작성한 사용자면, 해당 포스트 삭제 후 커밋
+    db.session.delete(post)
+    db.session.commit()
+    flash('블로그 포스트 삭제가 완료 되었습니다.')
+    
+    return redirect(url_for('core.index'))
