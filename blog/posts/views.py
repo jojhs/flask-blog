@@ -24,5 +24,10 @@ def create_post():
     return render_template('create_post.html', form=form)
     
 # BLOG POST (VIEW)
+# post_id 정수형으로 캐스팅
+@posts.route('/<int:post_id>')
+def post(post_id): 
+    post = Post.query.get_or_404(post_id)
+    return render_template('post.html', title=post.title, date=post.date, post=post)
 # UPDATE 
 # DELETE 
