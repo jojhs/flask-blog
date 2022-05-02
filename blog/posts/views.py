@@ -11,11 +11,11 @@ posts = Blueprint('posts', __name__)
 # CREATE 
 @posts.route('/create', methods=['GET','POST'])
 @login_required
-def create_post(): 
+def create(): 
     form = PostForm()
     
     if form.validate_on_submit() :     
-        post = PostForm(title=form.title.data, 
+        post = Post(title=form.title.data, 
                         text=form.text.data,
                         user_id=current_user.id) 
         db.session.add(post)
@@ -33,7 +33,7 @@ def post(post_id):
     return render_template('post.html', title=post.title, date=post.date, post=post)
 
 # UPDATE 
-@post.route('/<int:post_id>/update', methods=['GET','POST'])
+@posts.route('/<int:post_id>/update', methods=['GET','POST'])
 @login_required
 def update(post_id): 
     post = Post.query.get_or_404(post_id)
@@ -62,7 +62,7 @@ def update(post_id):
     return render_template('create_post.html', title='포스트 수정', form=form)
 
 # DELETE 
-@post.route('/<int:post_id>/delete', methods=['GET','POST'])
+@posts.route('/<int:post_id>/delete', methods=['GET','POST'])
 @login_required
 def delete(post_id): 
     post = Post.query.get_or_404(post_id)

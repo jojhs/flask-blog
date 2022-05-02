@@ -6,7 +6,7 @@
     <h3>게시일 : {{post.date.strftime('%B %d, %Y')}}</h3>
     <p>{{post.text}}</p>
 
-    {% if post.author == cureent_user %}
+    {% if post.author == current_user %}
     <div>
         <a href="{{url_for('posts.update', post_id=post.id)}}">포스트 수정</a>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del_modal">포스트 삭제</button>

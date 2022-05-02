@@ -9,7 +9,6 @@ def load_user(user_id) :
     return User.query.get(user_id)
 
 class User(db.Model, UserMixin): 
-    print('### User 클래스 ###')
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     profile_image = db.Column(db.String(64), nullable=False, default='default_profile.png')
